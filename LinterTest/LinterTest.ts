@@ -10,7 +10,7 @@ namespace LinterTest {
   }
 
   const info: Info = { text: "G`udetmvhsgBncd1 ", KEY: KEY.POS };
-  console.log(deCrypt(info.text, info.KEY));
+  alert(deCrypt(info.text, info.KEY));
 
   function deCrypt(_text: string, _key: number): string {
 

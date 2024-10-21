@@ -7,7 +7,7 @@ var LinterTest;
         KEY[KEY["NEG"] = -1] = "NEG";
     })(KEY || (KEY = {}));
     const info = { text: "G`udetmvhsgBncd1 ", KEY: KEY.POS };
-    console.log(deCrypt(info.text, info.KEY));
+    alert(deCrypt(info.text, info.KEY));
     function deCrypt(_text, _key) {
         let result = "";
         for (let i = 0; i < _text.length; i++) {
