@@ -2,33 +2,36 @@
 var OldMcDoof;
 (function (OldMcDoof) {
     let Animals = [];
+    let iterations = 0;
+    let storage = 100;
     class Animal {
-        constructor(_type, _food, _amount, _noise) {
-            this.set(_type, _food, _amount, _noise);
+        constructor(_type, _food, _noise) {
+            this.set(_type, _food, _noise);
         }
-        set(_type, _food, _amount, _noise) {
+        set(_type, _food, _noise) {
             this.type = _type;
             this.food = _food;
-            this.amount = _amount;
             this.noise = _noise;
         }
-        eat(_amount) {
-            this.amount -= _amount;
+        eat() {
+            this.food--;
         }
         alert() {
             console.log(this.noise);
         }
     }
-    let Cow = new Animal("cow", "wheat", 10, "moo");
-    let Chicken = new Animal("chicken", "seeds", 10, "chirp");
-    let Pig = new Animal("pig", "wheat", 10, "oink");
+    let Cow = new Animal("cow", 3, "moo");
+    let Chicken = new Animal("chicken", 1, "chirp");
+    let Pig = new Animal("pig", 4, "oink");
     Animals.push(Cow);
     Animals.push(Chicken);
     Animals.push(Pig);
-    function simulate() {
-        for (let i = 0; i < Animals.length; i++) {
-            Animals[i].alert();
-            Animals[i].eat(1);
+    function simulate(_iterations) {
+        for (let j = 0; j < _iterations; j++) {
+            for (let i = 0; i < Animals.length; i++) {
+                Animals[i].alert();
+                Animals[i].eat();
+            }
         }
     }
     OldMcDoof.simulate = simulate;
