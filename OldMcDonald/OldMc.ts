@@ -1,7 +1,6 @@
 namespace OldMcDoof {
 
     let Animals: Animal[] = [];
-    let iterations: number = 0;
     let storage: number = 100;
 
     class Animal {
@@ -20,7 +19,12 @@ namespace OldMcDoof {
         }
 
         eat(): void {
-            this.food--;
+            if (storage >= this.food) {
+                storage -= this.food;
+                console.log(storage);
+            }else{
+                alert("no more food left!!!!!!!!!!!!!!!");
+            }
         }
 
         alert(): void {

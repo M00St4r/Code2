@@ -2,7 +2,6 @@
 var OldMcDoof;
 (function (OldMcDoof) {
     let Animals = [];
-    let iterations = 0;
     let storage = 100;
     class Animal {
         constructor(_type, _food, _noise) {
@@ -14,7 +13,13 @@ var OldMcDoof;
             this.noise = _noise;
         }
         eat() {
-            this.food--;
+            if (storage >= this.food) {
+                storage -= this.food;
+                console.log(storage);
+            }
+            else {
+                alert("no more food left!!!!!!!!!!!!!!!");
+            }
         }
         alert() {
             console.log(this.noise);
