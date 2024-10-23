@@ -1,8 +1,17 @@
 namespace VectorClass {
 
     class Vector {
-        x: number;
-        y: number;
+        x: number = 0;
+        y: number = 0;
+
+        constructor(_x: number, _y: number) {
+            this.set(_x, _y);
+        }
+
+        set(_x: number, _y: number) {
+            this.x = _x;
+            this.y = _y;
+        }
 
         scale(_factor: number): void {
             this.x *= _factor;
@@ -15,7 +24,7 @@ namespace VectorClass {
         }
     }
 
-    let v1: Vector = new Vector();
+    let v1: Vector = new Vector(1, 5);
     v1.scale(2);
     console.log(v1);
 }
