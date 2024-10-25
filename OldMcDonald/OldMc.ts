@@ -1,16 +1,12 @@
 namespace OldMcDoof {
 
-    export class Animal {
+    class Animal {
         type: string;
         food: number;
         hunger: number;
         noise: string;
 
         constructor(_type: string, _food: number, _noise: string, _hunger: number) {
-            this.set(_type, _food, _noise, _hunger);
-        }
-
-        set(_type: string, _food: number, _noise: string, _hunger: number) {
             this.type = _type;
             this.food = _food;
             this.noise = _noise;
@@ -28,6 +24,18 @@ namespace OldMcDoof {
             return this.noise;
         }
     }
+
+    // class Food {
+    //     type: string;
+    //     stock: number;
+    //     hunger: number;
+
+    //     constructor(_type: string, _stock: number, _hunger: number){
+    //         this.type = _type;
+    //         this.stock = _stock;
+    //         this.hunger = _hunger;
+    //     }
+    // }
 
     let Animals: Animal[] = [];
     let food: number[] = [25,25,25]; //crop, seeds, nuts
@@ -50,7 +58,6 @@ namespace OldMcDoof {
 
             for (let i = 0; i < Animals.length; i++) {
                 console.log(Animals[i].alert());
-                //Animals[i].eat(storage);
                 console.log(food = Animals[i].eat(food));
 
             }

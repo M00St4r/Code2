@@ -3,9 +3,6 @@ var OldMcDoof;
 (function (OldMcDoof) {
     class Animal {
         constructor(_type, _food, _noise, _hunger) {
-            this.set(_type, _food, _noise, _hunger);
-        }
-        set(_type, _food, _noise, _hunger) {
             this.type = _type;
             this.food = _food;
             this.noise = _noise;
@@ -21,7 +18,16 @@ var OldMcDoof;
             return this.noise;
         }
     }
-    OldMcDoof.Animal = Animal;
+    // class Food {
+    //     type: string;
+    //     stock: number;
+    //     hunger: number;
+    //     constructor(_type: string, _stock: number, _hunger: number){
+    //         this.type = _type;
+    //         this.stock = _stock;
+    //         this.hunger = _hunger;
+    //     }
+    // }
     let Animals = [];
     let food = [25, 25, 25]; //crop, seeds, nuts
     let Cow = new Animal("cow", 0, "Old", 3);
@@ -39,7 +45,6 @@ var OldMcDoof;
             console.log("days: " + j);
             for (let i = 0; i < Animals.length; i++) {
                 console.log(Animals[i].alert());
-                //Animals[i].eat(storage);
                 console.log(food = Animals[i].eat(food));
             }
         }
