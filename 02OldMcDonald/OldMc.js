@@ -15,7 +15,7 @@ var OldMcDoof;
             return _food;
         }
         alert() {
-            return this.noise;
+            console.log(this.noise);
         }
         doSpecialAction() {
             console.log(`${this.type} does a special action`);
@@ -77,8 +77,8 @@ var OldMcDoof;
         for (let j = 0; j < _iterations; j++) {
             console.log("days: " + j);
             for (let i = 0; i < Animals.length; i++) {
-                console.log(Animals[i].alert());
-                console.log(food = Animals[i].eat(food));
+                Animals[i].alert();
+                food = Animals[i].eat(food);
                 Animals[i].doSpecialAction();
             }
         }

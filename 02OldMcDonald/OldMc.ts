@@ -21,8 +21,8 @@ namespace OldMcDoof {
             return _food;
         }
 
-        alert(): string {
-            return this.noise;
+        alert(){
+            console.log(this.noise);
         }
 
         doSpecialAction() {
@@ -105,8 +105,8 @@ namespace OldMcDoof {
             console.log("days: " + j);
 
             for (let i = 0; i < Animals.length; i++) {
-                console.log(Animals[i].alert());
-                console.log(food = Animals[i].eat(food));
+                Animals[i].alert();
+                food = Animals[i].eat(food);
                 Animals[i].doSpecialAction();
             }
         }
