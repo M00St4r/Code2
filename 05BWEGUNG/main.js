@@ -41,7 +41,7 @@ var FirstFudge;
         const frameTimeInSeconds = (frameTimeInMiliSeconds / 1000);
         const degrees = 360 * frameTimeInSeconds;
         const pos = 2 * frameTimeInSeconds;
-        node.mtxLocal.rotateY(degrees, true);
+        //node.mtxLocal.rotateY(degrees,false);
         if (direction == false) {
             node.mtxLocal.translateX(-pos);
             offset -= pos;
