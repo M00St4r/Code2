@@ -5,8 +5,7 @@ var FirstFudge;
     console.log(f);
     window.addEventListener("load", start);
     const node = new f.Node("Node");
-    let globalViewport;
-    f.Loop.addEventListener("loopFrame" /* f.EVENT.LOOP_FRAME */, moveCube);
+    let Viewport;
     let direction = false;
     let offset = 0;
     function start() {
@@ -28,35 +27,28 @@ var FirstFudge;
         node.addComponent(cpmTransform);
         node.mtxLocal.translateX(0);
         console.log(node);
-        const viewport = new f.Viewport();
-        viewport.initialize("viewport", node, camera, canvas);
-        viewport.draw();
-        globalViewport = viewport;
-        console.log(viewport);
+        Viewport = new f.Viewport;
+        Viewport.initialize("viewport", node, camera, canvas);
+        console.log(Viewport);
+        f.Loop.addEventListener("loopFrame" /* f.EVENT.LOOP_FRAME */, update);
         f.Loop.start();
         f.Time.game.setScale(0.2);
     }
-    function moveCube() {
-        const frameTimeInMiliSeconds = f.Loop.timeFrameGame;
-        const frameTimeInSeconds = (frameTimeInMiliSeconds / 1000);
+    let pos = 0.001;
+    function update() {
+        const frameTimeInMilliSeconds = f.Loop.timeFrameGame;
+        const frameTimeInSeconds = (frameTimeInMilliSeconds / 1000);
         const degrees = 360 * frameTimeInSeconds;
-        const pos = 2 * frameTimeInSeconds;
+        //let pos: number = 2 * frameTimeInSeconds;
         node.mtxLocal.rotateY(degrees);
-        if (direction == false) {
-            node.mtxLocal.translateX(-pos, false);
-            offset -= pos;
-            if (offset <= -2) {
-                direction = true;
-            }
+        node.mtxLocal.translateX(pos, false);
+        if (node.mtxLocal.translation.x > 2) {
+            pos = -pos;
         }
-        else {
-            node.mtxLocal.translateX(+pos, false);
-            offset += pos;
-            if (offset >= 2) {
-                direction = false;
-            }
+        else if (node.mtxLocal.translation.x < -2) {
+            pos = -pos;
         }
-        globalViewport.draw();
+        Viewport.draw();
     }
 })(FirstFudge || (FirstFudge = {}));
 //# sourceMappingURL=main.js.map

@@ -5,10 +5,8 @@ namespace FirstFudge {
 
     window.addEventListener("load", start);
 
-
     const node: f.Node = new f.Node("Node");
-    let globalViewport: f.Viewport;
-    f.Loop.addEventListener(f.EVENT.LOOP_FRAME, moveCube);
+    let Viewport: f.Viewport;
 
     let direction: boolean = false;
     let offset: number = 0;
@@ -42,38 +40,38 @@ namespace FirstFudge {
 
         console.log(node);
 
-        const viewport: f.Viewport = new f.Viewport();
-        viewport.initialize("viewport", node, camera, canvas);
-        viewport.draw();
-        globalViewport = viewport;
-        console.log(viewport);
+        Viewport = new f.Viewport;
+        Viewport.initialize("viewport", node, camera, canvas);
+        console.log(Viewport);
 
+        f.Loop.addEventListener(f.EVENT.LOOP_FRAME, update);
         f.Loop.start();
         f.Time.game.setScale(0.2);
-
     }
 
-    function moveCube(): void {
-        const frameTimeInMiliSeconds: number = f.Loop.timeFrameGame;
-        const frameTimeInSeconds: number = (frameTimeInMiliSeconds / 1000);
+    let pos = 0.001;
+
+    function update(): void {
+
+        const frameTimeInMilliSeconds: number = f.Loop.timeFrameGame;
+        const frameTimeInSeconds: number = (frameTimeInMilliSeconds / 1000);
         const degrees: number = 360 * frameTimeInSeconds;
-        const pos: number = 2 * frameTimeInSeconds;
+
+        //let pos: number = 2 * frameTimeInSeconds;
 
         node.mtxLocal.rotateY(degrees);
 
-        if (direction == false) {
-            node.mtxLocal.translateX(-pos, false);
-            offset -= pos;
-            if (offset <= -2) {
-                direction = true;
-            }
-        }else{
-            node.mtxLocal.translateX(+pos, false);
-            offset += pos;
-            if (offset >= 2) {
-                direction = false;
-            }
+        node.mtxLocal.translateX(pos, false);
+
+        if (node.mtxLocal.translation.x > 2) {
+
+            pos = -pos;
+
+        } else if (node.mtxLocal.translation.x < -2) {
+
+            pos = -pos;
+
         }
-        globalViewport.draw();
+        Viewport.draw();
     }
 }
