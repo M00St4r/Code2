@@ -59,16 +59,16 @@ namespace FirstFudge {
         const degrees: number = 360 * frameTimeInSeconds;
         const pos: number = 2 * frameTimeInSeconds;
 
-        //node.mtxLocal.rotateY(degrees,false);
+        node.mtxLocal.rotateY(degrees);
 
         if (direction == false) {
-            node.mtxLocal.translateX(-pos);
+            node.mtxLocal.translateX(-pos, false);
             offset -= pos;
             if (offset <= -2) {
                 direction = true;
             }
         }else{
-            node.mtxLocal.translateX(+pos);
+            node.mtxLocal.translateX(+pos, false);
             offset += pos;
             if (offset >= 2) {
                 direction = false;

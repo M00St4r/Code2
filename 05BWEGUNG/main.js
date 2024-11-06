@@ -41,16 +41,16 @@ var FirstFudge;
         const frameTimeInSeconds = (frameTimeInMiliSeconds / 1000);
         const degrees = 360 * frameTimeInSeconds;
         const pos = 2 * frameTimeInSeconds;
-        //node.mtxLocal.rotateY(degrees,false);
+        node.mtxLocal.rotateY(degrees);
         if (direction == false) {
-            node.mtxLocal.translateX(-pos);
+            node.mtxLocal.translateX(-pos, false);
             offset -= pos;
             if (offset <= -2) {
                 direction = true;
             }
         }
         else {
-            node.mtxLocal.translateX(+pos);
+            node.mtxLocal.translateX(+pos, false);
             offset += pos;
             if (offset >= 2) {
                 direction = false;
