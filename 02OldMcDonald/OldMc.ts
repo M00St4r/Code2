@@ -1,6 +1,6 @@
 namespace OldMcDoof {
 
-    class Animal {
+    abstract class Animal {
         
         type: string;
         food: number;
