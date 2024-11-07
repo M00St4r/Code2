@@ -8,7 +8,7 @@ namespace SolarSystem {
 
     let sun: Body;
     let earth: Body;
-    //let moon: Body;
+    let moon: Body;
 
     let Viewport: f.Viewport;
     let nodeRotation: f.Node = new f.Node("EarthRotatino");
@@ -17,7 +17,7 @@ namespace SolarSystem {
 
         sun = new Body("sun", 1, "yellow", 0, 0.1)
         earth = new Body("earth", 1, "blue", 3, 1);
-        //moon = new Body("Moon", 1, "grey", 1, 1);
+        moon = new Body("Moon", 1, "grey", 1, 1);
 
         earth.mtxLocal.translateX(4);
 
@@ -34,7 +34,7 @@ namespace SolarSystem {
         // const cpmTransform: f.ComponentTransform = new f.ComponentTransform();
         // nodeCar.addComponent(cpmTransform);
         // nodeCar.mtxLocal.translateX(0);
-        //earth.addChild(moon.nodeRotation);
+        earth.addChild(moon.nodeRotation);
         sun.addChild(earth.nodeRotation);
         root.addChild(sun);
 
