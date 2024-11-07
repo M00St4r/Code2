@@ -87,7 +87,11 @@ namespace FirstFudge {
         const frameTimeInMilliSeconds: number = f.Loop.timeFrameGame;
         const frameTimeInSeconds: number = (frameTimeInMilliSeconds / 1000);
 
-        Viewport.camera.mtxPivot.lookAt(nodeCar.mtxWorld.translation, new f.Vector3(0, 1, 0));
+        const up: f.Vector3 = f.Vector3.Y();
+
+        Viewport.camera.mtxPivot.lookAt(nodeCar.mtxWorld.translation, up);
+
+        f.Recycler.store(up);
         // Viewport.camera.mtxPivot.rotateX(-Viewport.camera.mtxPivot.rotation.x + 30, false);
         // Viewport.camera.mtxPivot.rotateZ(-Viewport.camera.mtxPivot.rotation.z, false);
 
